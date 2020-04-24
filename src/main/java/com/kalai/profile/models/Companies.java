@@ -1,4 +1,4 @@
-package com.kalai.profile.model;
+package com.kalai.profile.models;
 
 import javax.persistence.*;
 import java.util.Date;

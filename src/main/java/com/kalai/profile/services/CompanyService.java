@@ -1,7 +1,7 @@
-package com.kalai.profile.service;
+package com.kalai.profile.services;
 
-import com.kalai.profile.model.Companies;
-import com.kalai.profile.repository.CompanyRepository;
+import com.kalai.profile.models.Companies;
+import com.kalai.profile.repositories.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
