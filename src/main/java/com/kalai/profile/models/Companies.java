@@ -1,7 +1,11 @@
 package com.kalai.profile.models;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 public class Companies {
@@ -13,14 +17,27 @@ public class Companies {
   @Column(name = "c_name")
   private String companyName;
 
-  @Column(name = "start_date")
-  private Date start_date;
+  @Column(name = "startDate")
+  private Date startDate;
 
-  @Column(name = "end_date")
-  private Date end_date;
+  @Column(name = "endDate")
+  private Date endDate;
 
-  @Column(name = "created_by")
-  private Integer created_by;
+  @Column(name = "createdBy")
+  private Integer createdBy;
+
+  @OneToMany(fetch = FetchType.LAZY)
+  @JoinColumn(name = "c_id", insertable = false, updatable = false)
+  @Fetch(FetchMode.JOIN)
+  private Set<Projects> projects;
+
+  public Set<Projects> getProjects() {
+    return projects;
+  }
+
+  public void setProjects(Set<Projects> projects) {
+    this.projects = projects;
+  }
 
   public Integer getcId() {
     return cId;
@@ -38,27 +55,27 @@ public class Companies {
     this.companyName = companyName;
   }
 
-  public Date getStart_date() {
-    return start_date;
+  public Date getStartDate() {
+    return startDate;
   }
 
-  public void setStart_date(Date start_date) {
-    this.start_date = start_date;
+  public void setStartDate(Date startDate) {
+    this.startDate = startDate;
   }
 
-  public Date getEnd_date() {
-    return end_date;
+  public Date getEndDate() {
+    return endDate;
   }
 
-  public void setEnd_date(Date end_date) {
-    this.end_date = end_date;
+  public void setEndDate(Date endDate) {
+    this.endDate = endDate;
   }
 
-  public Integer getCreated_by() {
-    return created_by;
+  public Integer getCreatedBy() {
+    return createdBy;
   }
 
-  public void setCreated_by(Integer created_by) {
-    this.created_by = created_by;
+  public void setCreatedBy(Integer createdBy) {
+    this.createdBy = createdBy;
   }
 }
